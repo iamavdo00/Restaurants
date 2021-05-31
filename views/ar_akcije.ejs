@@ -1,0 +1,39 @@
+<%- include('partials/header'); -%>
+
+<h3>NAVIGACIJA:</h3>
+<a href="/ar_pocetna">POCETNA, </a>
+<a href="/ar_meni">MENI</a><br>
+<ul class="recipes">
+    <% if(result.length===0) { %>
+        <a href="/ar_dodaj_akciju/<%= meni %>"><input type="button" class="btn" value="DODAJ AKCIJU"></a>
+    <% } else { %>  
+    <% for(var i=0; i<result.length; i++) { %>
+    <li class="recipe" id="<%= result[i].id %>">
+      <img src="/hamburger.png" alt="smoothie recipe icon">
+      <h1><%= result[i].naziv_akcije %></h1>
+      <h3>ZA MENI: <%= result[i].naziv %></h3>
+      <h3>DATUM POCETKA AKCIJE: <%= result[i].pocetak %></h3>
+      <h3>DATUM KRAJA AKCIJE: <%= result[i].kraj %></h3>
+      <h3>AKCIJSKA CIJENA: <%= result[i].akcijska_cijena %></h3>
+      <a href="/ar_uredi_akciju/<%= result[i].id %>"><input type="button" class="btn" value="UREDI"></a>
+      <input type="button" class="bri" value="IZBRIŠI" onclick="izbrisi('<%= result[i].id %>')">
+    </li>
+    <% } %>
+    <% } %>
+  </ul>
+
+  <script>
+    function izbrisi(id){
+      $.ajax({
+        url: '/ar_izbrisi_akciju/' + id,
+        method: 'DELETE',
+        success: function(result){
+          console.log(result);
+          $('#'+id).hide('slow');
+          location.reload();
+        }
+      });
+    }
+  </script>
+
+<%- include('partials/footer'); -%>

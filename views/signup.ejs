@@ -1,0 +1,22 @@
+<%- include('partials/header'); -%>
+
+<form method="POST">
+  <h2>Sign up</h2>
+  <label for="ime">Ime</label>
+  <input type="text" name="ime" required />
+  <label for="prezime">Prezime</label>
+  <input type="text" name="prezime" required />
+  <label for="adresa">Adresa</label>
+  <input type="text" name="adresa" required />
+  <label for="email">Email</label>
+  <input type="text" name="email" required />
+  <div class="email error"></div>
+  <label for="password">Password</label>
+  <input type="password" name="password" required />
+  <div class="password error"></div>
+  <label for="password1">Password again</label>
+  <input type="password" name="password1" required />
+  <button>Sign up</button>
+</form>
+
+<%- include('partials/footer'); -%>

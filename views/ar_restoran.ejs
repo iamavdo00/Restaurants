@@ -1,0 +1,19 @@
+<%- include('partials/header'); -%>
+
+<ul class="recipes">
+  <br><br><br>
+    <li class="recipe" id="<%= result[0].id %>">
+      <img src="/hamburger.png" alt="smoothie recipe icon">
+      <h1><%= result[0].naziv %></h1>
+      <h3>ID RESTORANA: <%= result[0].id %></h3>
+      <h3>GRAD: <%= result[0].grad %></h3>
+      <h3>KATEGORIJA: <%= result[0].kategorija %></h3>
+      <h3>ZVJEZDICE: <%= result[0].zvjezdice %></h3>
+      <h3>DODATNO: <%= result[0].dodatno %></h3>
+      <h3>ID DOSTAVLJACA: <%= result[0].id_dos %></h3>
+      <a href="/ar_uredi_restoran/<%= result[0].id %>"><input type="button" class="btn" value="UREDI"></a>
+      <a href="/ar_dodaj_dostavljaca/<%= result[0].id %>"><input type="button" class="bar" value="DODAJ DOSTAVLJACA"></a>
+    </li>
+  </ul>
+
+<%- include('partials/footer'); -%>

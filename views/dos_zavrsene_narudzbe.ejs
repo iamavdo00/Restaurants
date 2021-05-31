@@ -1,0 +1,27 @@
+<%- include('partials/header'); -%>
+
+<h3>NAVIGACIJA:</h3>
+<a href="/dos_pocetna">POCETNA, </a>
+<br><br>
+<% if(result.length===0) { %>
+    <br><h2>Nema zavrsenih narudzbi!</h2>
+<% }else { %>
+
+<ul class="recipes">
+    <% for(var i=0; i<result.length; i++) { %>
+    <li class="recipe" id="<%= result[i].id %>">
+      <img src="/hamburger.png" alt="smoothie recipe icon">
+      <h1><%= result[i].naziv_narudzbe %></h1>
+      <h3>NARUCIO: <%= result[i].korisnik %></h3>
+      <h3>IME: <%= result[i].ime %></h3>
+      <h3>PREZIME: <%= result[i].prezime %></h3>
+      <h3>ADRESA: <%= result[i].adresa %></h3>
+      <h3>KOLICINA: <%= result[i].kolicina %></h3>
+      <h3>DATUM NARUDZBE: <%= result[i].datum_narudzbe %></h3>
+      <h3>ROK ISPORUKE: <%= result[i].rok_isporuke %>h</h3>
+      <h3>CIJENA: <strong><%= result[i].cijena %>KM</strong></h3>
+    <% } %>
+    <% } %>
+  </ul>
+
+<%- include('partials/footer'); -%>

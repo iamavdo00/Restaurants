@@ -1,0 +1,53 @@
+<%- include('partials/header'); -%>
+
+<h3>NAVIGACIJA:</h3>
+<a href="/ar_pocetna">POCETNA, </a>
+<br><br>
+<% if(result.length===0) { %>
+    <br><h2>Nema narudzbi!</h2>
+<% }else { %>
+
+<ul class="recipes">
+    <% for(var i=0; i<result.length; i++) { %>
+    <li class="recipe" id="<%= result[i].id %>">
+      <img src="/hamburger.png" alt="smoothie recipe icon">
+      <h1><%= result[i].naziv_narudzbe %></h1>
+      <h3>NARUCIO: <%= result[i].korisnik %></h3>
+      <h3>IME: <%= result[i].ime %></h3>
+      <h3>PREZIME: <%= result[i].prezime %></h3>
+      <h3>ADRESA: <%= result[i].adresa %></h3>
+      <h3>KOLICINA: <%= result[i].kolicina %></h3>
+      <h3>DATUM NARUDZBE: <%= result[i].datum_narudzbe %></h3>
+      <h3>ROK ISPORUKE: <%= result[i].rok_isporuke %>h</h3>
+      <h3>CIJENA: <strong><%= result[i].cijena %>KM</strong></h3>
+      <input type="button" class="btn" value="ODOBRI I POSALJI DOSTAVLJACU" onclick="odobri('<%= result[i].id %>',
+      '<%= result[i].naziv_narudzbe %>','<%= result[i].ime %>','<%= result[i].prezime %>','<%= result[i].korisnik %>',
+      '<%= result[i].adresa %>','<%= result[i].kolicina %>','<%= result[i].cijena %>','<%= result[i].datum_narudzbe %>',
+      '<%= result[i].rok_isporuke %>','<%= result[i].id_meni %>','<%= result[i].id_akcije %>','<%= result[i].id_dos %>',
+      '<%= result[i].id_res %>','<%= result[i].id_ar %>')"></li>
+    <% } %>
+    <% } %>
+  </ul>
+
+  <script>
+    function odobri(id_narudzbe,naziv_narudzbe,ime,prezime,korisnik,adresa,kolicina,cijena,datum_narudzbe,rok_isporuke,
+    id_meni,id_akcije,id_dos,id_res,id_ar){
+      if(confirm('Potvrdi odobrenje!')){
+        console.log(id_narudzbe,naziv_narudzbe,ime,prezime,korisnik,adresa,kolicina,cijena,datum_narudzbe,rok_isporuke,
+    id_meni,id_akcije,id_dos,id_res,id_ar);
+        $.ajax({
+          url: '/ar_odobri_narudzbu/'+id_narudzbe+'/'+naziv_narudzbe+'/'+ime+'/'+prezime+'/'+korisnik+'/'+adresa+'/'+kolicina+'/'
+          +cijena+'/'+datum_narudzbe+'/'+rok_isporuke+'/'+id_meni+'/'+id_akcije+'/'+id_dos+'/'+id_res+'/'+id_ar,
+          method: 'POST',
+          success: function(result){
+            //console.log(result);
+            $('#'+id_narudzbe).hide('slow');
+          }
+        });
+      } else {
+        location.reload();
+      }
+    }
+  </script>
+
+<%- include('partials/footer'); -%>

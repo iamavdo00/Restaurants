@@ -1,0 +1,20 @@
+<%- include('partials/header'); -%>
+
+<form method="POST">
+  <h2>Uredi meni</h2>
+  <label for="naziv">Name of meni</label>
+  <input type="text" name="naziv" value="<%= result[0].naziv %>" />
+  <div class="email error"></div>
+  <label for="predjelo">Predjelo</label>
+  <input type="text" name="predjelo" value="<%= result[0].predjelo %>" />
+  <div class="password error"></div>
+  <label for="glavno_jelo">Glavno jelo</label>
+  <input type="text" name="glavno_jelo" value="<%= result[0].glavno_jelo %>" />
+  <label for="desert">Desert</label>
+  <input type="text" name="desert" value="<%= result[0].desert %>" />
+  <label for="cijena">Cijena</label>
+  <input type="text" name="cijena" value="<%= result[0].cijena %>" />
+  <button>UREDI</button>
+</form>
+
+<%- include('partials/footer'); -%>

@@ -1,0 +1,16 @@
+<%- include('partials/header'); -%>
+
+<form method="POST">
+  <h2>Dodaj akciju</h2>
+  <label for="naziv_akcije">Ime akcije</label>
+  <input type="text" name="naziv_akcije" />
+  <label for="pocetak">Datum pocetka</label>
+  <input type="text" name="pocetak" />
+  <label for="kraj">Datum kraja</label>
+  <input type="text" name="kraj" />
+  <label for="akcijska_cijena">Akcijska cijena</label>
+  <input type="text" name="akcijska_cijena" />
+  <button>DODAJ AKCIJU</button>
+</form>
+
+<%- include('partials/footer'); -%>

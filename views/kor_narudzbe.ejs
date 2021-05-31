@@ -1,0 +1,40 @@
+<%- include('partials/header'); -%>
+
+<h3>NAVIGACIJA:</h3>
+<a href="/kor_pocetna">POCETNA</a><br>
+
+<% if(result.length===0) { %>
+    <h1>NEMATE NARUDZBI</h1>
+<% }else{ %>
+
+<ul class="recipes">
+    <% for(var i=0; i<result.length; i++) { %>
+    <li class="recipe" id="<%= result[i].id %>">
+      <img src="/hamburger.png" alt="smoothie recipe icon">
+      <h1><%= result[i].naziv_narudzbe %></h1>
+      <h3>KORISNIK: <%= result[i].korisnik %></h3>
+      <h3>ADRESA: <%= result[i].adresa %></h3>
+      <h3>CIJENA: <%= result[i].cijena %> KM</h3>
+      <h3>DATUM NARUDZBE: <%= result[i].datum_narudzbe %></h3>
+      <h3>ROK ISPORUKE: DO <%= result[i].rok_isporuke %>h</h3>
+      <input type="button" class="bri" value="IZBRISI" onclick="izbrisi('<%= result[i].id %>')">
+    </li>
+    <% } %>
+  </ul>
+<% } %>
+  <script>
+    function izbrisi(id_narudzbe){
+      if(confirm('DA LI ZELITE OBRISATI NARUDZBU OD PRIJE?')){
+      $.ajax({
+        url: '/kor_izbrisi_zavrsenu_narudzbu/' + id_narudzbe,
+        method: 'DELETE',
+        success: function(result){
+          location.reload();
+        }
+      });}else{
+        location.reload();
+      }
+    }
+  </script>
+
+<%- include('partials/footer'); -%>

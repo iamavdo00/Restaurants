@@ -1,0 +1,29 @@
+<%- include('partials/header'); -%>
+
+<p>* Vrijeme dostave mozete promijeniti kad Vama odgovara!</p>
+<ul class="recipes">
+    <br><br>
+    <li class="recipe" id="<%= id_meni %>">
+      <img src="/hamburger.png" alt="smoothie recipe icon">
+      <h1><%= naziv %></h1>
+      <h3>IME: <%= kor_ime %></h3>
+      <h3>PREZIME: <%= kor_prezime %></h3>
+      <h3>ADRESA: <%= kor_adresa %></h3>
+      <h3>CIJENA: <strong><%= cijena %></strong></h3>
+      <form class="frm" method="POST">
+        <label for="vrijeme">VRIJEME DOSTAVE</label>
+        <input type="text" name="vrijeme" placeholder="<%= vrijeme %>" >
+        <label for="kolicina">KOLICINA</label>
+        <select class="frn" name="kolicina">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <button>POTVRDI NARUDZBU</button>
+      </form>
+    </li>
+  </ul>
+
+<%- include('partials/footer'); -%>

@@ -1,0 +1,36 @@
+<%- include('partials/header'); -%>
+
+<h3>NAVIGACIJA:</h3>
+<a href="/ar_pocetna">POCETNA</a><br><br>
+<a href="/ar_dodaj_meni/<%= restoran %>"><input type="button" class="btn" value="DODAJ MENI"></a>
+<ul class="recipes">
+    <% for(var i=0; i<result.length; i++) { %>
+    <li class="recipe" id="<%= result[i].id %>">
+      <img src="/hamburger.png" alt="smoothie recipe icon">
+      <h1><%= result[i].naziv %></h1>
+      <h3>PREDJELO: <%= result[i].predjelo %></h3>
+      <h3>GLAVNO JELO: <%= result[i].glavno_jelo %></h3>
+      <h3>DESERT: <%= result[i].desert %></h3>
+      <h3>CIJENA: <strong><%= result[i].cijena %></strong></h3>
+      <h3>ID RESTORANA: <%= result[i].id_res %></h3>
+      <a href="/ar_uredi_meni/<%= result[i].id %>"><input type="button" class="btn" value="UREDI"></a>
+      <a href="/ar_akcije/<%= result[i].id %>"><input type="button" class="btn" value="AKCIJE"></a>
+      <input type="button" class="bri" value="IZBRIŠI" onclick="izbrisi('<%= result[i].id %>')">
+    </li>
+    <% } %>
+  </ul>
+
+  <script>
+    function izbrisi(id){
+      $.ajax({
+        url: '/ar_meni_izbrisi/' + id,
+        method: 'DELETE',
+        success: function(result){
+          console.log(result);
+          $('#'+id).hide('slow');
+        }
+      });
+    }
+  </script>
+
+<%- include('partials/footer'); -%>

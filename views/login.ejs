@@ -1,0 +1,21 @@
+<%- include('partials/header'); -%>
+
+<form method="POST">
+  <h2>Login</h2>
+  <label for="ko">You log in as: </label>
+  <select id="ko" name="ko">
+    <option value="korisnik">Korisnik</option>
+    <option value="administrator">Administrator</option>
+    <option value="administrator_restorana">Administrator restorana</option>
+    <option value="dostavljac">Dostavljac</option>
+  </select>
+  <label for="email">Email</label>
+  <input type="text" name="email"  />
+  <div class="email error"></div>
+  <label for="password">Password</label>
+  <input type="password" name="password"  />
+  <div class="password error"></div>
+  <button>Log in</button>
+</form>
+
+<%- include('partials/footer'); -%>

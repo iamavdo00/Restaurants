@@ -1,0 +1,37 @@
+<%- include('partials/header'); -%>
+
+<h3>NAVIGACIJA:</h3>
+<a href="/dos_pocetna">POCETNA</a><br>
+
+<ul class="recipes">
+    <% for(var i=0; i<result.length; i++) { %>
+    <li class="recipe" id="<%= result[i].id %>">
+      <img src="/hamburger.png" alt="smoothie recipe icon">
+      <h1><%= result[i].naziv_narudzbe %></h1>
+      <h3>KORISNIK: <%= result[i].korisnik %></h3>
+      <h3>ADRESA: <%= result[i].adresa %></h3>
+      <h3>CIJENA: <%= result[i].cijena %> KM</h3>
+      <h3>DATUM NARUDZBE: <%= result[i].datum_narudzbe %></h3>
+      <h3>ROK ISPORUKE: DO <%= result[i].rok_isporuke %>h</h3>
+      <h3>STATUS: <%= result[i].status %></h3>
+      <input type="button" class="bar" value="ISPORUCENO" onclick="isporuceno('<%= result[i].id %>')">
+    </li>
+    <% } %>
+  </ul>
+
+  <script>
+    function isporuceno(id_narudzbe){
+      if(confirm('DA LI STE ISPORUCILI NARUDZBU?')){
+      $.ajax({
+        url: '/dos_narudzba_isporucena/' + id_narudzbe,
+        method: 'POST',
+        success: function(result){
+          location.reload();
+        }
+      });}else{
+        location.reload();
+      }
+    }
+  </script>
+
+<%- include('partials/footer'); -%>

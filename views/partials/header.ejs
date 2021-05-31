@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav>
+    <h1><a href="/">RESTAURANTS</a></h1>
+    <ul>
+      <% if(user) { %>
+      <li>Welcome, <%= user %></li>
+      <li><a href="/logout">Log out</a></li>
+      <% } else { %>
+      <li><a href="/login">Log in</a></li>
+      <li><a href="/signup" class="btn">Sign up</a></li>
+      <% } %>
+    </ul>
+  </nav>
+  

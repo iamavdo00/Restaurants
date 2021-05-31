@@ -1,0 +1,20 @@
+<%- include('partials/header'); -%>
+
+<form method="POST">
+  <h2>Add restaurant</h2>
+  <label for="naziv">Name of restaurant</label>
+  <input type="text" name="naziv"  />
+  <div class="email error"></div>
+  <label for="grad">City</label>
+  <input type="text" name="grad"  />
+  <div class="password error"></div>
+  <label for="kategorija">Category</label>
+  <input type="text" name="kategorija"  />
+  <label for="zvjezdice">Stars</label>
+  <input type="text" name="zvjezdice"  />
+  <label for="dodatno">Dodatno</label>
+  <input type="text" name="dodatno"  />
+  <button>DODAJ</button>
+</form>
+
+<%- include('partials/footer'); -%>

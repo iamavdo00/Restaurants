@@ -1,0 +1,16 @@
+<%- include('partials/header'); -%>
+
+<form method="POST">
+  <h2>Uredi akciju</h2>
+  <label for="naziv_akcije">Ime akcije</label>
+  <input type="text" name="naziv_akcije" value="<%= result[0].naziv_akcije %>" />
+  <label for="pocetak">Datum pocetka</label>
+  <input type="text" name="pocetak" value="<%= result[0].pocetak %>" />
+  <label for="kraj">Datum kraja</label>
+  <input type="text" name="kraj" value="<%= result[0].kraj %>" />
+  <label for="akcijska_cijena">Stars</label>
+  <input type="text" name="akcijska_cijena" value="<%= result[0].akcijska_cijena %>" />
+  <button>UREDI</button>
+</form>
+
+<%- include('partials/footer'); -%>

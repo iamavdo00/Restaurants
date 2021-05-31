@@ -1,0 +1,42 @@
+<%- include('partials/header'); -%>
+
+<h3>NAVIGACIJA:</h3>
+<a href="/kor_pocetna">POCETNA, </a>
+<a href="/kor_restorani">LISTA RESTORANA</a><br>
+<ul class="recipes">
+    <% if(result.length===0) { %>
+        <br><br><br><h2>Nema akcije za ovaj meni!</h2>
+    <% } else { %>  
+    <% for(var i=0; i<result.length; i++) { %>
+    <br><br><br><li class="recipe" id="<%= result[i].id %>">
+      <img src="/hamburger.png" alt="smoothie recipe icon">
+      <h1><%= result[i].naziv_akcije %></h1>
+      <h3>ZA MENI: <%= result[i].naziv %></h3>
+      <h3>DATUM POCETKA AKCIJE: <%= result[i].pocetak %></h3>
+      <h3>DATUM KRAJA AKCIJE: <%= result[i].kraj %></h3>
+      <h3>AKCIJSKA CIJENA: <%= result[i].akcijska_cijena %></h3>
+      <a href="/kor_naruci_akciju1/<%= id_meni %>/<%= result[i].naziv_akcije %>/<%= restoran %>/<%= kor_email %>/<%= kor_ime %>/<%= kor_prezime %>/<%= kor_adresa %>/<%= result[i].akcijska_cijena %>/<%= result[i].id %>"><input type="button" value="NARUCI"></a>
+    </li>
+    <% } %>
+    <% } %>
+  </ul>
+
+  <script>
+    function naruci(id_meni,naziv,id_res,email,adresa,cijena,id){
+      if(confirm('Potvrdite narudzbu!')){
+        console.log(id_meni,naziv,id_res,email,adresa,cijena,id);
+        $.ajax({
+          url: '/kor_naruci_akciju/'+ id_meni +'/'+ naziv +'/'+ id_res +'/'+ email +'/'+ adresa +'/'+ cijena + '/' +id,
+          method: 'POST',
+          success: function(result){
+            //console.log(result);
+            $('#'+id).hide('slow');
+          }
+        });
+      } else {
+        location.reload();
+      }
+    }
+  </script>
+
+<%- include('partials/footer'); -%>

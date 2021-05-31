@@ -1,0 +1,20 @@
+<%- include('partials/header'); -%>
+
+<form method="POST">
+    <h2>Dodaj meni</h2>
+    <label for="naziv">Name of meni</label>
+    <input type="text" name="naziv" />
+    <div class="email error"></div>
+    <label for="predjelo">Predjelo</label>
+    <input type="text" name="predjelo" />
+    <div class="password error"></div>
+    <label for="glavno_jelo">Glavno jelo</label>
+    <input type="text" name="glavno_jelo" />
+    <label for="desert">Desert</label>
+    <input type="text" name="desert" />
+    <label for="cijena">Cijena</label>
+    <input type="text" name="cijena" />
+    <button>DODAJ</button>
+</form>
+
+<%- include('partials/footer'); -%>

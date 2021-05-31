@@ -1,0 +1,17 @@
+<%- include('partials/header'); -%>
+
+<ul class="recipes">
+    <% for(var i=0; i<result.length; i++) { %>
+    <li class="recipe" id="<%= result[i].id %>">
+      <img src="/hamburger.png" alt="smoothie recipe icon">
+      <h1><%= result[i].naziv %></h1>
+      <h3>GRAD: <%= result[i].grad %></h3>
+      <h3>KATEGORIJA: <%= result[i].kategorija %></h3>
+      <h3>ZVJEZDICE: <%= result[i].zvjezdice %></h3>
+      <h3>DODATNO: <%= result[i].dodatno %></h3>
+      <a href="/kor_meni_restorana/<%= result[i].id %>"><input type="button" class="btn" value="MENI"></a>
+    </li>
+    <% } %>
+  </ul>
+
+<%- include('partials/footer'); -%>
